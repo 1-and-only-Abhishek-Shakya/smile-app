@@ -11,25 +11,25 @@ app.use(
   express.urlencoded({ extended: false, limit: 10000, parameterLimit: 5 })
 );
 //SQL Configuration
-const config = {
-  user: "sa",
-  password: "print@123",
-  server: `DESKTOP-R7UKJLG\\SQLEXPRESS`,
-  database: "tkt",
-  options: {
-    encrypt: false, // For secure connection to Azure SQL Database
-  },
-};
-
 // const config = {
-//   user: "abhi007_tkt",
-//   password: "sa1",
-//   server: `sql.bsite.net\\MSSQL2016`,
-//   database: "issues",
+//   user: "sa",
+//   password: "print@123",
+//   server: `DESKTOP-R7UKJLG\\SQLEXPRESS`,
+//   database: "tkt",
 //   options: {
 //     encrypt: false, // For secure connection to Azure SQL Database
 //   },
 // };
+
+const config = {
+  user: "abhi007_tkt",
+  password: "sa1",
+  server: `sql.bsite.net\\MSSQL2016`,
+  database: "abhi007_tkt",
+  options: {
+    encrypt: false, // For secure connection to Azure SQL Database
+  },
+};
 
 // Transporter object for mail settings
 const transporter = nodemailer.createTransport({
@@ -157,7 +157,7 @@ app.post("/submit-complaint", (req, res) => {
       return res.status(500).send("SQL query execution failed");
     }
     //sending 0 in sendMail to tell the function to send request submitted mail.  
-    sendMail(0, email, name, clientname);
+    // sendMail(0, email, name, clientname);
     res.status(200).send("Complaint submitted successfully");
   });
 });
@@ -177,7 +177,7 @@ app.patch("/status-update/", (req, res) => {
     } else if (result.rowsAffected[0] == 0) {
       return res.status(404).json({ message: "Complaint not found" });
     }
-    sendMail(remarks, email, user, company);
+    // sendMail(remarks, email, user, company);
     return res.status(200).json({ message: "Status set to completed!!" });
   });
 });
