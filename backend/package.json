@@ -9,7 +9,7 @@
   "keywords": [],
   "engines": {
     "node": ">=18.13.0 <18.18.0"
-  }
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
