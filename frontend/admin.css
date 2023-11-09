@@ -1,0 +1,26 @@
+
+
+.status-pending{
+    background-color: #E2532B;
+    color: white;
+}
+
+.status-completed{
+    background-color: #45f0ab;
+}
+
+.companyName {
+    font-weight: bold;
+    /* color: gray; */
+    padding-bottom: 5px;
+  }
+  
+  .forFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .count {
+    color: gray
+  }
