@@ -1,16 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "App to handle the requests coming from frontend and sending it to the database",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "keywords": [],
-  "engines": {
-    "node": ">=18.13.0 <18.18.0"
-  },
-  "author": "",
+  "author": "Abhishek Shakya",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

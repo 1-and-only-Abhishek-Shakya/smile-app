@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(
   express.urlencoded({ extended: false, limit: 10000, parameterLimit: 5 })
 );
+
 //SQL Configuration
 // const config = {
 //   user: "sa",
@@ -89,7 +90,7 @@ const sendMail = (remarks, email, user, company) => {
   Your request is marked as completed.\n \n Regards,\nSmile Computers`,
     };
   } else {
-    console.log("Reached here. Mail ID is ", email);
+    // console.log("Reached here. Mail ID is ", email);
     mailOptions = {
       from: "techsupport@printbaroda.com",
       to: `${email}`,
@@ -130,7 +131,7 @@ const dateFormatter = (arr) => {
 
 // Complaints endpoint to send all the complaints
 app.get("/complaints", (req, res) => {
-  new sql.Request().query("select * FROM complaints1", (err, result) => {
+  new sql.Request().query("select * FROM complaints1 order by RecordID desc", (err, result) => {
     if (err) console.log(err);
     else {
       let { recordset } = result;
@@ -153,10 +154,10 @@ app.post("/submit-complaint", (req, res) => {
   const request = new sql.Request();
   request.query(sqlQuery, (err) => {
     if (err) {
-      console.error("SQL query execution failed:", err);
+      // console.error("SQL query execution failed:", err);
       return res.status(500).send("SQL query execution failed");
     }
-    //sending 0 in sendMail to tell the function to send request submitted mail.  
+    //sending 0 in sendMail to tell the function to send request submitted mail.
     // sendMail(0, email, name, clientname);
     res.status(200).send("Complaint submitted successfully");
   });
@@ -167,7 +168,7 @@ app.post("/submit-complaint", (req, res) => {
 app.patch("/status-update/", (req, res) => {
   // const cardID = parseInt(req.params.RecordID);
   const { remarks, ID, company, email, user } = req.body;
-  console.log(remarks, ID);
+  // console.log(remarks, ID);
   const sqlQuery = `update complaints1 set status = 1,remarks = '${remarks}' where RecordID = ${ID}`;
   const request = new sql.Request();
   request.query(sqlQuery, (err, result) => {
@@ -180,6 +181,44 @@ app.patch("/status-update/", (req, res) => {
     // sendMail(remarks, email, user, company);
     return res.status(200).json({ message: "Status set to completed!!" });
   });
+});
+
+//Getting data for calls schedule from frontend
+app.post("/submit-entry/", (req, res) => {
+  const { companyName, entryType, remarks } = req.body;
+
+  // Process the entry data (saving it to a database)
+  const sqlQuery = `INSERT INTO schedule (company,engr,rmrk) VALUES ('${companyName}', ${entryType}, '${remarks}')`;
+  // console.log("Query: ", sqlQuery);
+  const request = new sql.Request();
+  request.query(sqlQuery, (err, result) => {
+    if (err) {
+      console.log("Query execution failed: ", err);
+      return res.status(500).json({ message: "Query execution failed" });
+    }
+    return res.status(200).json({ message: "Schedule updated!" });
+  });
+  // console.log("Received Entry:", { companyName, entryType, remarks });
+
+  // Respond to the client
+  // res.json({ message: "Entry submitted successfully" });
+});
+
+// Sending the scheduler log
+app.get("/getScheduleData/", (req, res) => {
+  new sql.Request().query(
+    "select * FROM schedule",
+    // "SELECT * FROM schedule WHERE CONVERT(DATE, date) = CONVERT(DATE, GETDATE());",
+    (err, result) => {
+      if (err) console.log(err);
+      else {
+        let { recordset } = result;
+        let finalData = dateFormatter(recordset);
+        // console.log("Following complaints sent: \n", finalData);
+        res.send(finalData);
+      }
+    }
+  );
 });
 
 //Old code for patch
