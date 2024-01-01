@@ -51,10 +51,21 @@ app.use(cors());
 app.options("*", cors());
 
 // Connect to database
-sql.connect(config, (err) => {
-  if (err) console.log(err);
-  else console.log("Connected to database !!");
-});
+// sql.connect(config, (err) => {
+//   if (err) console.log(err);
+//   else console.log("Connected to database !!");
+// });
+
+async function connectToDB() {
+  try {
+    await sql.connect(config);
+    console.log("Connected to Database !!");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+connectToDB();
 
 // For checking
 app.get("/", (req, res) => {
