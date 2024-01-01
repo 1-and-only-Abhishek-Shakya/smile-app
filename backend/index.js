@@ -65,11 +65,12 @@ app.options("*", cors());
 //   }
 // }
 // Wrap the connection in an async function to use async/await
+let pool;
 async function connectToDB() {
   try {
     // Create a new pool if not already created
-    if (!sql.isConnected()) {
-      await sql.connect(config);
+    if (!pool) {
+      pool = await sql.connect(config);
     }
 
     console.log("Connected to database!!");
@@ -262,9 +263,11 @@ app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 // Add an event listener to close the connection when the Node process is terminated
 process.on("SIGTERM", async () => {
   try {
-    await sql.close();
+    if(pool){
+    await pool.close();
     console.log("Connection closed.");
-  } catch (err) {
+    }
+    } catch (err) {
     console.log(err);
   }
 });
