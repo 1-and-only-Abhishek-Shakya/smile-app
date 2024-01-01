@@ -59,7 +59,7 @@ sql.connect(config, (err) => {
 // For checking
 app.get("/", (req, res) => {
   res.status(200).json({"message": "Site connected"});
-};
+});
 
 // Selection of from to and content
 // const mailOptions = {
