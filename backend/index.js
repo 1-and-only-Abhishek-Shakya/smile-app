@@ -56,7 +56,7 @@ sql.connect(config, (err) => {
   else console.log("Connected to database !!");
 });
 
-Testing sql query
+// For checking
 app.get("/", (req, res) => {
   res.status(200).json({"message": "Site connected"});
 };
