@@ -56,10 +56,23 @@ app.options("*", cors());
 //   else console.log("Connected to database !!");
 // });
 
+// async function connectToDB() {
+//   try {
+//     await sql.connect(config);
+//     console.log("Connected to Database !!");
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+// Wrap the connection in an async function to use async/await
 async function connectToDB() {
   try {
-    await sql.connect(config);
-    console.log("Connected to Database !!");
+    // Create a new pool if not already created
+    if (!sql.isConnected()) {
+      await sql.connect(config);
+    }
+
+    console.log("Connected to database!!");
   } catch (err) {
     console.log(err);
   }
@@ -245,3 +258,13 @@ app.get("/getScheduleData/", (req, res) => {
 
 //Listen to port
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+
+// Add an event listener to close the connection when the Node process is terminated
+process.on("SIGTERM", async () => {
+  try {
+    await sql.close();
+    console.log("Connection closed.");
+  } catch (err) {
+    console.log(err);
+  }
+});
