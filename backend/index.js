@@ -56,17 +56,10 @@ sql.connect(config, (err) => {
   else console.log("Connected to database !!");
 });
 
-// Testing sql query
-// app.get("/", (req, res) => {
-//   new sql.Request().query("select * FROM complaints", (err, result) => {
-//     if (err) console.log(err);
-//     else {
-//       res.send(result);
-//         const { recordsets } = result;
-//         res.send(recordsets[0][0]);
-//     }
-//   });
-// });
+Testing sql query
+app.get("/", (req, res) => {
+  res.status(200).json({"message": "Site connected"});
+};
 
 // Selection of from to and content
 // const mailOptions = {
