@@ -1,0 +1,10 @@
+.nameContainer { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.dateNdBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

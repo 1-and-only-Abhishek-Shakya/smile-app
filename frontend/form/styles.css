@@ -1,0 +1,185 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #b1d8e5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    /* box-shadow: #333; */
+  }
+  
+  .form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    /* border-color: blue; */
+    box-shadow: 0px 0px 10px rgba(59, 59, 59, 0.674);
+    margin: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    margin-right: 15px;
+    /* border-color: black; */
+  }
+  
+  label {
+    font-weight: normal;
+    color: #7c7d7d;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(61, 60, 60, 0.663);
+    border-radius: 5px;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .file-upload {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .file-name {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .file-upload-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .submit-btn,
+  .reset-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #3a3b3a;
+    color: white;
+  }
+  
+  .confirmation {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #45f0ab;
+    color: #fff;
+  }
+  
+  .customToastBody{
+    background-color: #45f0ab;
+  }
+
+
+  /* testing phase */
+
+.section {
+  margin-bottom: 1rem;
+  display: grid;
+  align-items: center;
+}
+
+.input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border-radius: 7px;
+  padding: 0.7rem 1rem;
+  background-color: transparent;
+  border: 1px solid black;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 1px solid var(--line);
+}
+
+.input:focus {
+  outline: 1px solid var(--line-active);
+}
+
+.input[type="submit"] {
+  cursor: pointer;
+}
+
+.label {
+  /* background-color: rgb(138, 147, 247); */
+  justify-self: start;
+  transition-property: transform, padding, font-size;
+  transition-duration: 0.3s;
+  margin: 0 1rem;
+  pointer-events: none;
+  color: gray;
+}
+
+.label,
+.input {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label {
+  transform: translateY(-124%);
+  font-size: 0.8rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  background-color: red;
+  color: white;
+}
+
+.section ::placeholder {
+  color: transparent;
+}
+
+.compHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#issueName {
+  color: red;
+}
+
+.registerHere{
+  display: flex;
+  flex-direction: column;
+}
+
+#registerBtn{
+  background-color: slategray;
+  color: white;
+}
+
+#registerBtn:hover{
+  background-color:lightslategray;
+}
