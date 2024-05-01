@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "App to handle the requests coming from frontend and sending it to the database",
   "main": "index.js",
   "scripts": {
