@@ -268,13 +268,13 @@ app.get("/getScheduleData/", (req, res) => {
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 
 // Add an event listener to close the connection when the Node process is terminated
-process.on("SIGTERM", async () => {
-  try {
-    if (pool) {
-      await pool.close();
-      console.log("Connection closed.");
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
+// process.on("SIGTERM", async () => {
+//   try {
+//     if (pool) {
+//       await pool.close();
+//       console.log("Connection closed.");
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
