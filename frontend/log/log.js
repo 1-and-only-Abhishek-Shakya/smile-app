@@ -1,8 +1,8 @@
 // const { load } = require("mime");
 
 // const root = document.getElementById("root");
-// const URL = "https://smile-service.onrender.com/";
-const URL = "http://localhost:8082/";
+const URL = "https://smile-service.onrender.com/";
+// const URL = "http://localhost:8082/";
 // const URL = "https://lazy-gabardine-lion.cyclic.app/";
 
 // document.addEventListener('DOMContentLoaded', async function () {

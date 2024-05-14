@@ -17,7 +17,7 @@ async function pageStart() {
 
 // Function to fetch data from the API
 // const URL = "https://lazy-gabardine-lion.cyclic.app/";
-const URL = "http://localhost:8082/";
+const URL = "https://smile-service.onrender.com/";
 // let URL = "https://smile-service.onrender.com/";
 //  let cardData;
 async function fetchData() {
