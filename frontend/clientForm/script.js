@@ -1,7 +1,7 @@
 const fileUpload = document.getElementById("file");
 const fileName = document.querySelector(".file-name");
 // const URL = "https://smile-service.onrender.com/submit-complaint"
-const URL = "http://localhost:8082/submit-complaint";
+const URL = "https://smile-service.onrender.com/submit-complaint";
 // const URL = "https://lazy-gabardine-lion.cyclic.app/submit-complaint";
 const form = document.getElementById("registration-form");
 const confirmation = document.getElementById("confirmation");
