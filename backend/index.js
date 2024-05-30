@@ -33,12 +33,12 @@ const config = {
 
 // Transporter object for mail settings
 const transporter = nodemailer.createTransport({
-  host: "",
-  port: 99,
+  host: "mail.smilecomputers.in",
+  port: 587,
   secure: false,
   auth: {
-    user: "",
-    pass: "",
+    user: "support@smilecomputers.in",
+    pass: "P7+3qj6F2c0uR5yJk5?Xkj@R",
   },
   tls: {
     rejectUnauthorized: false,
@@ -66,7 +66,7 @@ const sendMail = (remarks, email, user, company) => {
   // console.log("Email = ",email,"Mail options = " ,mailOptions);
   if (remarks) {
     mailOptions = {
-      from: "",
+      from: "support@smilecomputers.in",
       to: `${email}`,
       subject: `[SOLVED] Request fullfilled for ${company}`,
       text: `
@@ -76,7 +76,7 @@ const sendMail = (remarks, email, user, company) => {
   } else {
     // console.log("Reached here. Mail ID is ", email);
     mailOptions = {
-      from: "",
+      from: "support@smilecomputers.in",
       to: `${email}`,
       subject: `Request submitted for ${company}`,
       text: `
@@ -160,7 +160,7 @@ app.post("/submit-complaint/:type", (req, res) => {
           return res.status(500).send("SQL query execution failed");
         }
         //sending 0 in sendMail to tell the function to send request submitted mail.
-        // sendMail(0, email, name, clientname);
+        sendMail(0, email, name, clientname);
         res.status(200).send("Complaint submitted successfully");
       });
     } else if (req.params.type == 2) {
